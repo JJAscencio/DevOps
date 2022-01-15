@@ -10,7 +10,11 @@ jobs:
     - name: Step One
       uses: actions/checkout@v2
     - name: Step two
-      run: env | sort
+      run: touch test.uaml
+        echo {{secrets.MY_FILE_NAME}}.yaml
+        echo "My first File" >> ${{secrets.MY_FILE_NAME}}.yaml
+        cat ${{secrets.MY_FILE_NAME}}.yaml
+        pwd
     job2:
       name: Second job
       runs-on: windows-;atest
@@ -18,10 +22,7 @@ jobs:
       - name: Step One
         uses: actions/checkout@v2
       - name: Step two
-        run: touch test.uaml
-        echo "My first file" > test.yaml
-        cat test.yaml
-        pwd
+        run: date
       job3:
           needs: [job1]
           runs-on: macos-latest
@@ -32,5 +33,5 @@ jobs:
           - name: Step2
             run:  |
               date
-              touch test.yaml
+              touch ${{secrets.MY_FILE_NAME}}.yaml
               pwd
