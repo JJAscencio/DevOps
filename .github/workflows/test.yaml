@@ -16,7 +16,10 @@ jobs:
       - name: Step One
         uses: actions/checkout@v2
       - name: Step two
-        run: date
+        run: touch test.uaml
+        echo "My first file" > test.yaml
+        cat test.yaml
+        pwd
       job3:
           needs: [job1]
           runs-on: macos-latest
@@ -28,3 +31,4 @@ jobs:
             run:  |
               date
               touch test.yaml
+              pwd
