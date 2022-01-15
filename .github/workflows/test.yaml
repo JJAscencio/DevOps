@@ -10,10 +10,10 @@ jobs:
       - name: Step One
         uses: actions/checkout@v2
       - name: Step two
-        run: touch test.uaml
-          echo {{secrets.MY_FILE_NAME}}.yaml
-          echo "My first File" >> ${{secrets.MY_FILE_NAME}}.yaml
-          cat ${{secrets.MY_FILE_NAME}}.yaml
+        run: touch test.yaml
+          echo ${{secrets.MY_FILE_NAME}}.yaml
+          echo "My first File" >> ${{ secrets.MY_FILE_NAME }}.yaml
+          cat ${{ secrets.MY_FILE_NAME }}.yaml
           pwd
   job2:
     name: Second job
@@ -32,5 +32,5 @@ jobs:
       - name: Step2
         run: |
           date
-          touch ${{secrets.MY_FILE_NAME}}.yaml
+          touch ${{ secrets.MY_FILE_NAME }}.yaml
           pwd
